@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pata Nahi Kyon...</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Noto Serif Devanagari", serif;
+
+    /* Soft glass-friendly background */
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255, 182, 193, .30), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(173, 216, 230, .35), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(221, 160, 221, .30), transparent 35%),
+        linear-gradient(135deg, #f8e8ee, #e7f3f8, #f3e9f6);
+
+    color: #332b31;
+}
+
+/* Floating light blobs */
+.blob {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .35;
+    z-index: -1;
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+.blob.one {
+    background: #ff9fb2;
+    top: 5%;
+    left: -100px;
+}
+
+.blob.two {
+    background: #91d8ef;
+    right: -100px;
+    top: 40%;
+    animation-delay: 2s;
+}
+
+.blob.three {
+    background: #d5a3ed;
+    bottom: -120px;
+    left: 40%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(40px);
+    }
+}
+
+/* Main */
+.container {
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 70px 0;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.small-title {
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    opacity: .6;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(48px, 10vw, 90px);
+    font-weight: 400;
+    line-height: 1;
+    background: linear-gradient(90deg, #8d4058, #b76d87, #80507e);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    margin-top: 18px;
+    font-size: 16px;
+    opacity: .65;
+}
+
+/* Glass card */
+.poetry-card {
+    position: relative;
+    padding: clamp(28px, 6vw, 65px);
+
+    border-radius: 32px;
+
+    background: rgba(255, 255, 255, .27);
+    border: 1px solid rgba(255, 255, 255, .65);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(94, 54, 80, .15),
+        inset 0 1px 0 rgba(255,255,255,.8);
+
+    overflow: hidden;
+}
+
+/* Glass shine */
+.poetry-card::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.35);
+    filter: blur(70px);
+    top: -160px;
+    right: -100px;
+}
+
+.poetry-card::after {
+    content: "❝";
+    position: absolute;
+    top: 12px;
+    left: 25px;
+    font-family: Georgia, serif;
+    font-size: 100px;
+    color: rgba(255,255,255,.5);
+}
+
+/* Shayari */
+.shayari {
+    position: relative;
+    z-index: 2;
+}
+
+.line {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: reveal .9s ease forwards;
+    margin-bottom: 30px;
+}
+
+.line:nth-child(1) { animation-delay: .5s; }
+.line:nth-child(2) { animation-delay: 1.2s; }
+.line:nth-child(3) { animation-delay: 1.9s; }
+.line:nth-child(4) { animation-delay: 2.6s; }
+.line:nth-child(5) { animation-delay: 3.3s; }
+.line:nth-child(6) { animation-delay: 4s; }
+.line:nth-child(7) { animation-delay: 4.7s; }
+.line:nth-child(8) { animation-delay: 5.4s; }
+.line:nth-child(9) { animation-delay: 6.1s; }
+.line:nth-child(10) { animation-delay: 6.8s; }
+.line:nth-child(11) { animation-delay: 7.5s; }
+.line:nth-child(12) { animation-delay: 8.2s; }
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.normal {
+    font-size: clamp(17px, 2.5vw, 22px);
+    line-height: 2;
+}
+
+.highlight {
+    color: #9b4965;
+    font-weight: 600;
+}
+
+.pause {
+    display: block;
+    margin-top: 10px;
+    font-family: "DM Serif Display", serif;
+    font-size: 19px;
+    font-style: italic;
+    color: #9a5c72;
+}
+
+/* Ending */
+.ending {
+    text-align: center;
+    margin-top: 55px;
+    padding-top: 35px;
+    border-top: 1px solid rgba(100,70,90,.15);
+}
+
+.ending p {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(27px, 6vw, 45px);
+    color: #88465f;
+}
+
+/* Music button */
+.music-control {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.7);
+
+    background: rgba(255,255,255,.38);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 30px rgba(80,50,70,.18);
+
+    cursor: pointer;
+    font-size: 22px;
+
+    z-index: 100;
+    transition: .3s ease;
+}
+
+.music-control:hover {
+    transform: scale(1.08);
+}
+
+.music-control.playing {
+    animation: musicPulse 1.5s infinite;
+}
+
+@keyframes musicPulse {
+    50% {
+        box-shadow: 0 0 0 12px rgba(160,90,120,.08),
+                    0 10px 30px rgba(80,50,70,.18);
+    }
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 45px;
+    font-size: 13px;
+    opacity: .55;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .container {
+        padding: 45px 0;
+    }
+
+    .poetry-card {
+        border-radius: 25px;
+        padding: 28px 22px;
+    }
+
+    .normal {
+        font-size: 16px;
+        line-height: 1.9;
+    }
+
+    .line {
+        margin-bottom: 25px;
+    }
+
+    .music-control {
+        width: 52px;
+        height: 52px;
+        right: 16px;
+        bottom: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+<div class="blob three"></div>
+
+<main class="container">
+
+    <section class="hero">
+        <div class="small-title">A Story That Stayed</div>
+        <h1>Pata Nahi Kyon...</h1>
+        <p>Kuch mohabbatein mukammal nahi hoti.</p>
+    </section>
+
+
+    <article class="poetry-card">
+
+        <div class="shayari">
+
+            <div class="line normal">
+                Maine mohabbat mein uski tasveer banayi thi,<br>
+                Usne use bas ek dost ki nishani samajh kar rakh liya…
+                <span class="pause">Pata nahi kyon.</span>
+            </div>
+
+
+            <div class="line normal">
+                Main uske saath khel mein har baazi jeet jaata tha,<br>
+                Magar ishq ki baazi mein khud hi haar gaya…
+                <span class="pause">Pata nahi kyon.</span>
+            </div>
+
+
+            <div class="line normal">
+                Maine toh mohabbat mein uski kundali tak mila li thi,<br>
+                Aur usne shayad meri kismat mein<br>
+                mera naam hi nahi likha tha…
+                <span class="pause">Pata nahi kyon.</span>
+            </div>
+
+
+            <div class="line normal">
+                Main har baar uski khamoshi mein<br>
+                apne liye koi ishara dhoondhta raha,<br>
+                Woh har baar meri mohabbat ko<br>
+                sirf dosti samajhti rahi…
+                <span class="pause">Pata nahi kyon.</span>
+            </div>
+
+
+            <div class="line normal">
+                Na uski koi khata thi,<br>
+                Na meri mohabbat mein koi kami thi,<br>
+                Bas hum dono ki kismat ki<br>
+                kahani thodi alag thi…
+            </div>
+
+
+            <div class="ending">
+                <p>Pata nahi kyon…</p>
+            </div>
+
+        </div>
+
+    </article>
+
+    <div class="footer">
+        Some stories don't need an ending.
+    </div>
+
+    <div class="footer">
+        VARUN
+    </div>
+</main>
+
+
+<!-- ==============================
+     BACKGROUND MUSIC
+     ============================== -->
+
+<audio id="backgroundMusic" loop preload="auto">
+    <!-- YAHAN APNA SONG LINK LAGAO -->
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+
+<button
+    class="music-control"
+    id="musicButton"
+    aria-label="Music control">
+    ♫
+</button>
+
+
+<script>
+
+const music = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+
+let musicStarted = false;
+
+
+/* Try autoplay when page opens */
+window.addEventListener("load", async () => {
+
+    try {
+        music.volume = 0.45;
+
+        await music.play();
+
+        musicStarted = true;
+        musicButton.classList.add("playing");
+
+    } catch (error) {
+
+        /*
+          Browser ne autoplay block kiya.
+          First user interaction par music start hoga.
+        */
+
+        console.log("Autoplay blocked. Waiting for user interaction.");
+
+    }
+
+});
+
+
+/*
+   First click/touch anywhere on website:
+   music automatically starts.
+*/
+function startMusic() {
+
+    if (musicStarted) return;
+
+    music.volume = 0.45;
+
+    music.play()
+        .then(() => {
+
+            musicStarted = true;
+            musicButton.classList.add("playing");
+
+        })
+        .catch(() => {});
+
+}
+
+
+/* First interaction */
+document.addEventListener("click", startMusic, { once: true });
+document.addEventListener("touchstart", startMusic, { once: true });
+
+
+/* Music button */
+musicButton.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    if (music.paused) {
+
+        music.play();
+
+        musicStarted = true;
+        musicButton.classList.add("playing");
+
+    } else {
+
+        music.pause();
+        musicButton.classList.remove("playing");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
